@@ -92,6 +92,6 @@ ITEM_PIPELINES = {
 MONGO_URI = 'Localhost'
 MONGO_DATABASE = 'lagou'
 
-PROXY_POOL_URL = 'http://localhost:5000/get'
+PROXY_POOL_URL = 'http://0.0.0.0:5001/random'
 
 
