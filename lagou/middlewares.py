@@ -75,11 +75,25 @@ class ProxyMiddleware():
             proxy_pool_url =crawler.settings.get('PROXY_POOL_URL')
         )
 
-    def process_request(self, request, spider):
-        ip = self._get_random_proxies()
-        if ip:
-            request.meta['proxy'] = 'http://%s' % ip
-            self.logger.debug('using proxy' + ip)
-        else:
-            self.logger.debug('proxy is not available')
+# 如果取消注释：需要先将proxyfilter启动才能获取IP，否则程序将无法进行
+#     def process_request(self, request, spider):
+#         ip = self._get_random_proxies()['proxy']
+#         if ip:
+#             request.meta['proxy'] = 'http://%s' % ip
+#             self.logger.debug('using proxy' + ip)
+#         else:
+#             self.logger.debug('proxy is not available')
+            
+    def process_response(self, request, response, spider):
+        if json.loads(response.text)['success'] == False:
+            ip = self._get_random_proxies()['proxy']
+            if ip:
+                request.meta['proxy'] = 'http://%s' % ip
+                self.logger.debug('using proxy ' + ip)
+                return request
+            else:
+                self.logger.debug('proxy is not available')
+                return response
+        return response
+
 
