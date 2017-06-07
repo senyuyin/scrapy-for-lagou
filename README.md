@@ -17,6 +17,6 @@ clone好后，在命令行内输入：python3 run.py
 
 再进行scrapy抓取
 
-# 后续更新
+# 后续更新：
 
 加入 scrapy-redis分布式爬取拉勾网
