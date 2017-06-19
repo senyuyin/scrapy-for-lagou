@@ -3,6 +3,8 @@
 *.so
 *.egg
 *.egg-info
+*.idea
+.xml
 dist
 build
 
