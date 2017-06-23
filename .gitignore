@@ -8,3 +8,5 @@ dist
 build
 db.ini
 deploy_key_rsals
+lagou/__pycache__/
+lagou/spiders/__pycache__/
